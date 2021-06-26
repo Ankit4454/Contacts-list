@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" type="img/jfif" href="/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <title><%=title%></title>
+</head>
+<body>
+    <h1 id="heading"><i class="fas fa-address-book"></i>&ensp;My Contacts List</h1>
+    <ul id="mt">
+        <% for (let i of contact_list){ %>
+            <li class="list-item">
+                <p><%= i.name %></p>
+                <div class="float-right">
+                    <p class="mr"><%= i.phone %></p>
+                    <div class="delete-btn">
+                        <a href="/delete-contact/?id=<%= i._id %>"><i class="fas fa-window-close"></i></a> 
+                    </div>
+                </div>
+            </li>
+        <% } %>    
+    </ul>
+    <form action="/create-contact" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="number" name="phone" placeholder="Number" required>
+        <button type="submit">Add Contact</button>
+    </form>
+
+    <script src="/js/home.js"></script>
+</body>
+</html>
